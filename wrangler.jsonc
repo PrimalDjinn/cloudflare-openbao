@@ -1,0 +1,56 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "bao-wrapper",
+  "main": "dist/index.js",
+  "workers_dev": true,
+  // Set this to today's date
+  "compatibility_date": "2026-05-13",
+  "containers": [
+    {
+      "class_name": "BaoContainer",
+      "image": "./Dockerfile",
+      "max_instances": 5
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "BaoContainer",
+        "name": "BAO_CONTAINER"
+      }
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "ab5bde61-76bc-4df8-b690-206852521ef5",
+      "database_name": "BAO_DB"
+    }
+  ],
+  "migrations": [
+    {
+      "new_sqlite_classes": ["BaoContainer"],
+      "tag": "v1"
+    }
+  ],
+  "vars": {
+    "BAO_ADDR": "http://0.0.0.0:8200",
+    "SKIP_SETCAP": true 
+  },
+  "account_id": "7f9cdfd64edea51da760cb6104fc1fcc",
+  "observability": {
+    "enabled": false,
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false,
+      "persist": true,
+      "head_sampling_rate": 1
+    }
+  }
+}

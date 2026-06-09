@@ -1,0 +1,3 @@
+BAO_STATIC_SEAL_KEY=your_static_unseal_key_here
+# Format: https://<AccountID>:<APIToken>@<DatabaseID>
+BAO_D1_CONNECTION_URL=
