@@ -2,7 +2,7 @@ import { Container, type StopParams } from "@cloudflare/containers";
 
 export class BaoContainer extends Container {
   defaultPort = 8200; // Port the container is listening on
-  sleepAfter = "10m"; // Stop the instance if requests not sent for 10 minutes
+  sleepAfter = "4m"; // Stop the instance if requests not sent for 10 minutes
 
   constructor(ctx: DurableObjectState<{}>, env: Cloudflare.Env) {
     if(!env.BAO_STATIC_SEAL_KEY) {
