@@ -211,6 +211,9 @@ importers:
         specifier: ^0.3.4
         version: 0.3.4
     devDependencies:
+      '@chiballc/types':
+        specifier: ^0.0.0
+        version: 0.0.0
       '@cloudflare/workers-types':
         specifier: ^4.20260511.1
         version: 4.20260511.1
@@ -222,6 +225,9 @@ importers:
         version: 4.90.1(@cloudflare/workers-types@4.20260511.1)
 
 packages:
+
+  '@chiballc/types@0.0.0':
+    resolution: {integrity: sha512-P8c9Ftllpbmy/HUAiC30ezZ6TkH8vsvrfyXfYKieFiUDktqukSC8Qt0QSMkIQeHKRigW9f0NvSGQM5EH02Di3A==}
 
   '@cloudflare/containers@0.3.4':
     resolution: {integrity: sha512-6kWodmgBSug/rr9fjcWrZcKhxmWTEc1BTKC6nVv7yvYaRRvV3rZPZjq9R17eN0l9cl2LNc03wp/Z6OV+0uDwXA==}
@@ -831,6 +837,8 @@ packages:
     resolution: {integrity: sha512-rLfVLB4FgQneDr0dv1oddCVZmKjcJ6yX6mS4pU82Mq/Dt9a3cLZQ62pDBL4AUO+uVrCvtWz3ZFUL2HFAFJ/BXQ==}
 
 snapshots:
+
+  '@chiballc/types@0.0.0': {}
 
   '@cloudflare/containers@0.3.4': {}
 
