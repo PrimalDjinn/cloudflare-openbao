@@ -4,7 +4,19 @@ FROM node:20-alpine AS ui-builder
 COPY .ciao-repo /src
 
 WORKDIR /src/ui
-RUN corepack enable && pnpm install && pnpm build
+RUN set -eu; \
+    corepack enable; \
+    attempts=0; \
+    until corepack prepare pnpm@10.33.0 --activate; do \
+        attempts=$((attempts + 1)); \
+        if [ "$attempts" -ge 5 ]; then exit 1; fi; \
+        sleep $((attempts * 2)); \
+    done; \
+    pnpm install --frozen-lockfile \
+        --fetch-retries=5 \
+        --fetch-retry-mintimeout=2000 \
+        --fetch-retry-maxtimeout=20000; \
+    pnpm build
 
 # --- Stage 2: Build the Binary ---
 FROM golang:1.25-alpine AS binary-builder
