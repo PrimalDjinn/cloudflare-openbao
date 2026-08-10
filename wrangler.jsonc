@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "bao-wrapper",
+  "name": "cloudflare-openbao",
   "main": "dist/index.js",
   "workers_dev": true,
   // Set this to today's date
