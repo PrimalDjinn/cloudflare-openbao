@@ -5,11 +5,8 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 if [[ -f "$SCRIPT_DIR/.env" ]]; then
     source "$SCRIPT_DIR/.env"
-    elif [[ -f "$SCRIPT_DIR/.dev.vars" ]]; then
+elif [[ -f "$SCRIPT_DIR/.dev.vars" ]]; then
     source "$SCRIPT_DIR/.dev.vars"
-else
-    echo "Could not find the appropriate env file in $SCRIPT_DIR"
-    exit 1
 fi
 
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/ciao-repo"

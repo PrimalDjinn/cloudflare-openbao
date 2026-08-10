@@ -11,8 +11,10 @@ FROM golang:1.25-alpine AS binary-builder
 COPY --from=ui-builder /src /src
 WORKDIR /src
 RUN apk add --no-cache make git bash
-# Compiles the binary with UI assets embedded
-RUN make bin
+# Compiles the binary with UI assets embedded. The fork can contain newly
+# added dependencies before their checksums have been committed upstream, so
+# permit Go to populate go.sum in this disposable build stage.
+RUN GOFLAGS=-mod=mod make bin
 
 # --- Stage 3: Final Production Image ---
 FROM alpine:latest

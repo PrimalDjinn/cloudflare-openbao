@@ -4,14 +4,15 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "./build.sh && pnpm wrangler dev",
+    "dev": "bash ./build.sh && pnpm wrangler dev",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "build": "pnpm rolldown -c && sudo chmod +x ./build.sh && ./build.sh"
+    "build": "pnpm rolldown -c && bash ./build.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "packageManager": "pnpm@11.8.0",
   "dependencies": {
     "@cloudflare/containers": "^0.3.7"
   },
