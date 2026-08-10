@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "workers_dev": true,
   // Set this to today's date
-  "compatibility_date": "2026-05-13",
+  "compatibility_date": "2026-08-10",
   "containers": [
     {
       "class_name": "BaoContainer",
@@ -23,8 +23,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_id": "ab5bde61-76bc-4df8-b690-206852521ef5",
-      "database_name": "BAO_DB"
+      "database_id": "a4a8faa4-7ec0-4a2c-9db6-d28609f639a8",
+      "database_name": "openbao"
     }
   ],
   "migrations": [
@@ -37,7 +37,7 @@
     "BAO_ADDR": "http://0.0.0.0:8200",
     "SKIP_SETCAP": true 
   },
-  "account_id": "7f9cdfd64edea51da760cb6104fc1fcc",
+  "account_id": "34c304ef4d69b760a6eabd89842033ea",
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,
