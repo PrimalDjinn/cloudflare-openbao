@@ -32,5 +32,5 @@ if [[ -d "$BUILD_DIR/.git" ]]; then
     git -C "$BUILD_DIR" remote set-url origin https://github.com/PrimalDjinn/openbao.git
 fi
 
-DOCKER_BUILDKIT=1 docker build -t ciao-local .
+DOCKER_BUILDKIT=1 docker build --network=host -t ciao-local .
 pnpm wrangler containers build . -t ciao-local
