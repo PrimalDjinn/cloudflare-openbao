@@ -5,6 +5,7 @@ COPY .ciao-repo /src
 
 WORKDIR /src/ui
 RUN set -eu; \
+    printf '%s\n' 'nameserver 1.1.1.1' 'nameserver 1.0.0.1' > /etc/resolv.conf; \
     corepack enable; \
     attempts=0; \
     until corepack prepare pnpm@10.33.0 --activate; do \
@@ -25,7 +26,8 @@ WORKDIR /src
 # Compiles the binary with UI assets embedded. The fork can contain newly
 # added dependencies before their checksums have been committed upstream, so
 # permit Go to populate go.sum in this disposable build stage.
-RUN GOFLAGS=-mod=mod make bin
+RUN printf '%s\n' 'nameserver 1.1.1.1' 'nameserver 1.0.0.1' > /etc/resolv.conf && \
+    GOFLAGS=-mod=mod make bin
 
 # --- Stage 3: Final Production Image ---
 FROM alpine:latest
