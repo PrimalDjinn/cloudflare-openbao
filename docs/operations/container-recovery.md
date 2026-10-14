@@ -85,6 +85,22 @@ must be provisioned. A deploy builds the image from the fork's `REPO_BRANCH` (de
 `main`, see `build.sh`), so a code-only deploy also picks up new commits on that branch.
 Deploy only from reviewed, merged code at a quiet time.
 
+### Merging to `main` deploys
+
+This repository is connected to Cloudflare Workers Builds, which builds every push and
+deploys the production branch. Merging a pull request into `main` is therefore a deploy, and
+it restarts the container when the image or container settings change. Before merging:
+
+1. Record the active version ID: `cf pnpm wrangler deployments list` (see the credential
+   helper below). It is the target of the fast rollback.
+2. Record the current container settings: `cf pnpm wrangler containers list`.
+3. Merge at a quiet time, then run the post-deploy checks below.
+
+Branch builds also report a Worker version for the pull request's commit. Check the
+dashboard or `wrangler deployments list` to see whether a build activated it. Roll back with
+the steps below. Workers Builds does not redeploy until the next push to `main`, so a rollback
+stays in place until then.
+
 ### Private deploy credential
 
 Deploying needs only `CLOUDFLARE_API_TOKEN`. Keep it in a regular file owned by you, mode
