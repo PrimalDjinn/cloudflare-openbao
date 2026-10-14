@@ -15,6 +15,8 @@
     {
       "class_name": "BaoContainer",
       "image": "./Dockerfile",
+      // 1/4 vCPU, 1 GiB. The default 1/16 vCPU and 256 MiB starved OpenBao before each recorded outage (see docs/incidents).
+      "instance_type": "basic",
       "max_instances": 5
     }
   ],
