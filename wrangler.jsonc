@@ -3,8 +3,14 @@
   "name": "cloudflare-openbao",
   "main": "dist/index.js",
   "workers_dev": true,
+  "triggers": {
+    // The per-minute OpenBao liveness watchdog.
+    "crons": ["* * * * *"]
+  },
   // Set this to today's date
   "compatibility_date": "2026-08-10",
+  // The optional watchdog alert webhook may only reach the public internet.
+  "compatibility_flags": ["global_fetch_strictly_public"],
   "containers": [
     {
       "class_name": "BaoContainer",
