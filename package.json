@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "bash ./build.sh && pnpm wrangler dev",
     "test": "echo \"Error: no test specified\" && exit 0",
+    "typecheck": "tsc --noEmit",
+    "build:worker": "rolldown -c",
     "build": "pnpm rolldown -c && bash ./build.sh"
   },
   "keywords": [],
@@ -18,8 +20,9 @@
   },
   "devDependencies": {
     "@chiballc/types": "^0.0.0",
-    "@cloudflare/workers-types": "^5.20260724.1",
-    "rolldown": "^1.2.0",
-    "wrangler": "^4.114.0"
+    "@cloudflare/workers-types": "^5.20261012.1",
+    "rolldown": "^1.2.13",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.149.0"
   }
 }
