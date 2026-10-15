@@ -6,3 +6,7 @@ BAO_D1_CONNECTION_URL=
 BAO_D1_ACCOUNT_ID=
 BAO_D1_DATABASE_ID=
 BAO_D1_TOKEN=
+
+# Optional: HTTPS Slack-compatible webhook for watchdog recoveries and escalations.
+# Treat the URL as a credential; in production set it with `wrangler secret put`.
+# BAO_WATCHDOG_ALERT_URL=

@@ -3,12 +3,20 @@
   "name": "cloudflare-openbao",
   "main": "dist/index.js",
   "workers_dev": true,
+  "triggers": {
+    // The per-minute OpenBao liveness watchdog.
+    "crons": ["* * * * *"]
+  },
   // Set this to today's date
   "compatibility_date": "2026-08-10",
+  // The optional watchdog alert webhook may only reach the public internet.
+  "compatibility_flags": ["global_fetch_strictly_public"],
   "containers": [
     {
       "class_name": "BaoContainer",
       "image": "./Dockerfile",
+      // 1/4 vCPU, 1 GiB. The default 1/16 vCPU and 256 MiB starved OpenBao before each recorded outage (see docs/incidents).
+      "instance_type": "basic",
       "max_instances": 5
     }
   ],
